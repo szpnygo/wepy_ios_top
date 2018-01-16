@@ -2,3 +2,4 @@ storetop/dist
 *.log*
 .editorconfig
 .wepycache
+package-lock.json
