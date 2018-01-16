@@ -1,0 +1,48 @@
+<style lang="less">
+
+</style>
+<template>
+  <view class="container">
+    <panel>
+      <button @tap="requestApiData" size="mini"> 发起请求 </button>
+    </panel>
+    <panel>
+      <repeat for="{{ base.list }}" key="id" index="id" item="item">
+        {{item.name}}
+
+        <view class="feed-item">
+          <image src="{{ item.artworkUrl100 }}" class="feed-item__icon" mode="aspectFill" lazy-load></image>
+        </view>
+
+      </repeat>
+    </panel>
+
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import {getStore, connect} from 'wepy-redux'
+  import {requestApiData} from '../store/action'
+  import baseMixin from '../mixins/baseMixin'
+  const store = getStore();
+  const state = store.getState();
+
+  @connect({
+    base: state => state.base,
+  },{
+    requestApiData
+  })
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '榜单'
+    };
+
+    mixins = [baseMixin];
+
+    onLoad() {
+
+    }
+  }
+</script>
