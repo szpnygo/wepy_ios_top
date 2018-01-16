@@ -1,6 +1,7 @@
 <style lang="less">
 
 </style>
+
 <template>
   <view class="container">
     <panel>

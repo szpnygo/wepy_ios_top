@@ -1,4 +1,5 @@
 <style lang="less">
+@import './style/weui.less';
 .container {
   height: 100%;
   display: flex;
