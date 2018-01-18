@@ -22,9 +22,9 @@ module.exports = {
     less: {
       compress: true
     },
-    /*sass: {
+    sass: {
       outputStyle: 'compressed'
-    },*/
+    },
     babel: {
       sourceMap: true,
       presets: [
@@ -48,8 +48,8 @@ module.exports = {
 if (prod) {
 
   delete module.exports.compilers.babel.sourcesMap;
-  // 压缩sass
-  // module.exports.compilers['sass'] = {outputStyle: 'compressed'}
+  压缩sass
+  module.exports.compilers['sass'] = {outputStyle: 'compressed'}
 
   // 压缩less
   module.exports.compilers['less'] = {compress: true}

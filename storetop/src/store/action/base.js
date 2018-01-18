@@ -9,7 +9,7 @@ import {requestData} from '../../common/util'
 
 export const requestApiData = createAction(REQUEST_API, ()=>{
   return new Promise((resolve,reject) => {
-    requestData("https://rss.itunes.apple.com/api/v1/cn/ios-apps/top-paid/all/10/explicit.json",function (data) {
+    requestData("https://rss.itunes.apple.com/api/v1/cn/ios-apps/top-paid/all/100/explicit.json",function (data) {
       resolve(data.feed.results)
     },function (error) {
       reject(error)

@@ -1,24 +1,36 @@
-<style lang="less">
+<style rel="stylesheet/scss" lang="scss">
 
+  .list-item {
+    display: flex;
+    flex-direction: row;
+    margin: 32px;
+    font-size: 14px;
+    &__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+    }
+    &__title {
+      margin-left: 8px;
+    }
+  }
 </style>
 
 <template>
-  <view class="container">
-    <panel>
-      <button @tap="requestApiData" size="mini"> 发起请求 </button>
-    </panel>
-    <panel>
-      <repeat for="{{ base.list }}" key="id" index="id" item="item">
-        {{item.name}}
 
-        <view class="feed-item">
-          <image src="{{ item.artworkUrl100 }}" class="feed-item__icon" mode="aspectFill" lazy-load></image>
-        </view>
+  <repeat for="{{ base.list }}" key="id" index="index" item="item">
+    <view class="list-item">
+      <image src="{{ item.artworkUrl100 }}" class="list-item__icon" mode="scaleToFill" lazy-load></image>
+      <view class="list-item__title">{{ index+1 }}</view>
+      <view class="list-item__title">
+        <view>{{ item.name }}</view>
+        <view>{{ item.artistName}}</view>
+      </view>
+    </view>
 
-      </repeat>
-    </panel>
 
-  </view>
+  </repeat>
+
 </template>
 
 <script>
@@ -31,19 +43,26 @@
 
   @connect({
     base: state => state.base,
-  },{
+  }, {
     requestApiData
   })
 
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: '榜单'
+      navigationBarTitleText: '榜单',
+      enablePullDownRefresh: true,
     };
 
     mixins = [baseMixin];
 
     onLoad() {
+      store.dispatch(requestApiData());
+    }
 
+    onPullDownRefresh() {
+      store.dispatch(requestApiData());
+    }
+    onReachBottom() {
     }
   }
 </script>
