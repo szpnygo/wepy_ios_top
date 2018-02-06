@@ -48,7 +48,7 @@ module.exports = {
 if (prod) {
 
   delete module.exports.compilers.babel.sourcesMap;
-  压缩sass
+  // 压缩sass
   module.exports.compilers['sass'] = {outputStyle: 'compressed'}
 
   // 压缩less
