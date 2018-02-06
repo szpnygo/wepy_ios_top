@@ -1,0 +1,40 @@
+<template>
+    <view class="wrap {{ isx ? 'isx' : '' }}">
+        <slot name="header">
+            <view>
+                <text class="big_title">排行榜</text>
+                <picker class="small_country" range="{{ countryList }}" range-key="name" @change="selectCountry">「{{
+                    countryTitle }}」
+                </picker>
+            </view>
+        </slot>
+
+        <slot name="content">
+            <repeat for="{{ listData }}" key="id" index="index" item="item">
+                <common-item :item="item" :index="index"></common-item>
+            </repeat>
+        </slot>
+    </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import CommonItem from '../compoents/common-item'
+
+  export default class CommonList extends wepy.component {
+
+    components = {
+      'common-item': CommonItem
+    };
+
+    props = {
+      listData: Object,
+    };
+
+    data = {
+      isx: /iphone10/i.test(wx.getSystemInfoSync().model),
+    };
+
+
+  }
+</script>

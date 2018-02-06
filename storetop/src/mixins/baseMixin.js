@@ -1,9 +1,9 @@
 import wepy from 'wepy'
 import {SELECT_COUNTRY} from '../store/types/base'
 import {getStore} from 'wepy-redux'
-import {requestTopFree,requestNewApp,requestNewGame,requestTopPaid,requestTopSeller} from '../store/action'
 
 const store = getStore();
+
 export default class baseMixin extends wepy.mixin {
 
   config = {

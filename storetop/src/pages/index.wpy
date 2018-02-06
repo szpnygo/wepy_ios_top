@@ -3,29 +3,8 @@
 </style>
 
 <template>
-  <view class="wrap {{ isx ? 'isx' : '' }}">
-    <view>
-      <text class="big_title">排行榜</text>
-      <picker class="small_country" range="{{ countryList }}" range-key="name" @change="selectCountry">「{{ countryTitle }}」</picker>
-    </view>
-
-    <repeat for="{{ base.topFreeList }}" key="id" index="index" item="item">
-      <view class="list-item">
-        <view class="list-item__image">
-          <image src="{{ item.artworkUrl100 }}" class="list-item__icon" mode="scaleToFill" lazy-load></image>
-        </view>
-
-        <view class="list-item__order">{{ index+1 }}</view>
-
-        <view class="list-item__text">
-          <text class="list-item__title">{{ item.name }}</text>
-          <text class="list-item__sub-title">{{ item.genres[0].name }}</text>
-        </view>
-
-      </view>
-
-
-    </repeat>
+  <view>
+    <common-list :listData.sync="{{ listData }}"></common-list>
   </view>
 </template>
 
@@ -34,15 +13,20 @@
   import {getStore, connect} from 'wepy-redux'
   import {requestTopFree} from '../store/action'
   import baseMixin from '../mixins/baseMixin'
+  import CommonList from '../compoents/common-list';
   const store = getStore();
 
   @connect({
-    base: state => state.base,
+    listData: state => state.base.topFreeList,
     country: state => state.base.country,
     countryTitle: state => state.base.countryTitle,
   })
 
   export default class Index extends wepy.page {
+
+    components = {
+      'common-list': CommonList
+    };
 
     mixins = [baseMixin];
 
