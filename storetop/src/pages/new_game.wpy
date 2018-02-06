@@ -103,11 +103,11 @@
     mixins = [baseMixin];
 
     onLoad() {
-      store.dispatch(requestNewGame("cn"));
+      store.dispatch(requestNewGame(state.base.country));
     }
 
     onPullDownRefresh() {
-      store.dispatch(requestNewGame("cn"));
+      store.dispatch(requestNewGame(state.base.country));
     }
 
     onReachBottom() {

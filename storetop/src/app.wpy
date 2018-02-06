@@ -1,20 +1,22 @@
 <style lang="less">
-  @import './style/weui.less';
+    @import './style/weui.less';
 
-  .container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-  }
+    .container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
 </style>
 
 <script>
   import wepy from 'wepy'
   import 'wepy-async-function'
   import {requestIntercept} from './common/util'
+  import {requestTopFree, requestNewApp, requestNewGame, requestTopPaid, requestTopSeller} from './store/action'
+  import {REQUEST_API_NEW_APP, REQUEST_API_NEW_GAME, REQUEST_API_TOP_FREE, REQUEST_API_TOP_PAID, REQUEST_API_TOP_SELL} from './store/types/base'
   import {setStore} from 'wepy-redux'
   import  configStore from './store'
   const store = configStore();
@@ -56,7 +58,7 @@
           text: "免费排行",
           iconPath: "images/apps_normal.png",
           selectedIconPath: "images/apps_selected.png",
-        },{
+        }, {
           pagePath: "pages/seller_top",
           text: "畅销排行",
           iconPath: "images/hot_normal.png",
@@ -84,7 +86,16 @@
     }
 
     onLaunch() {
+      //数据缓存,加载最近一次的请求数据
+      this.loadCache(REQUEST_API_TOP_FREE);
+      this.loadCache(REQUEST_API_TOP_PAID);
+      this.loadCache(REQUEST_API_TOP_SELL);
+      this.loadCache(REQUEST_API_NEW_APP);
+      this.loadCache(REQUEST_API_NEW_GAME);
+    }
 
+    loadCache(key){
+      store.dispatch({type:key,payload:wepy.getStorageSync(key)});
     }
 
     getUserInfo(cb) {
