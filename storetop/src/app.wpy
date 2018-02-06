@@ -26,7 +26,8 @@
         &__icon {
             width: 64px;
             height: 64px;
-            border-radius: 8px;
+            border-radius: 22%;
+            border: .5px solid rgba(0,0,0,.1);
         }
         &__order {
             margin-left: 12px;
