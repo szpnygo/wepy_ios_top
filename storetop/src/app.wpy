@@ -24,7 +24,7 @@
     config = {
       pages: [
         'pages/index',
-        'pages/free_top',
+        'pages/new_app',
         'pages/new_game',
         'pages/paid_top',
         'pages/seller_top'
@@ -42,12 +42,7 @@
         borderStyle: "white",
         backgroundColor: "#fff",
         list: [{
-          pagePath: "pages/free_top",
-          text: "免费排行",
-          iconPath: "images/apps_normal.png",
-          selectedIconPath: "images/apps_selected.png",
-        },{
-          pagePath: "pages/index",
+          pagePath: "pages/new_app",
           text: "新鲜App",
           iconPath: "images/app_normal.png",
           selectedIconPath: "images/app_selected.png",
@@ -57,6 +52,11 @@
           iconPath: "images/games_normal.png",
           selectedIconPath: "images/games_selected.png",
         }, {
+          pagePath: "pages/index",
+          text: "免费排行",
+          iconPath: "images/apps_normal.png",
+          selectedIconPath: "images/apps_selected.png",
+        },{
           pagePath: "pages/seller_top",
           text: "畅销排行",
           iconPath: "images/hot_normal.png",
