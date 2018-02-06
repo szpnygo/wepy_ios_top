@@ -38,9 +38,9 @@
       },
       tabBar: {
         color: "#a9b7b7",
-        selectedColor: "#eb4f38",
+        selectedColor: "#1296db",
         borderStyle: "white",
-        backgroundColor: "#fff",
+        backgroundColor: "#F7F7F7",
         list: [{
           pagePath: "pages/new_app",
           text: "新鲜App",
