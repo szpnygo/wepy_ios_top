@@ -6,6 +6,7 @@
   <view class="wrap {{ isx ? 'isx' : '' }}">
     <view>
       <text class="big_title">排行榜</text>
+      <picker class="small_country" range="{{ countryList }}" range-key="name" @change="selectCountry">「{{ countryTitle }}」</picker>
     </view>
 
     <repeat for="{{ base.topPaidList }}" key="id" index="index" item="item">
@@ -38,6 +39,8 @@
 
   @connect({
     base: state => state.base,
+    country: state => state.base.country,
+    countryTitle: state => state.base.countryTitle,
   })
 
   export default class Index extends wepy.page {

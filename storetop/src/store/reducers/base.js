@@ -2,7 +2,14 @@
  * Created by ztadmin on 2018/1/16.
  */
 import {handleActions} from 'redux-actions'
-import {REQUEST_API_NEW_APP, REQUEST_API_NEW_GAME, REQUEST_API_TOP_FREE, REQUEST_API_TOP_PAID, REQUEST_API_TOP_SELL} from '../types/base'
+import {
+  REQUEST_API_NEW_APP,
+  REQUEST_API_NEW_GAME,
+  REQUEST_API_TOP_FREE,
+  REQUEST_API_TOP_PAID,
+  REQUEST_API_TOP_SELL,
+  SELECT_COUNTRY
+} from '../types/base'
 import wepy from 'wepy'
 
 const initialState ={
@@ -12,6 +19,7 @@ const initialState ={
   topPaidList:[],
   topSellList:[],
   country:'cn',
+  countryTitle: '中国'
 };
 
 export default handleActions({
@@ -63,6 +71,13 @@ export default handleActions({
     return{
       ...state,
       topSellList : data.payload
+    }
+  },
+  [SELECT_COUNTRY](state, data){
+    return{
+      ...state,
+      country : data.payload.value,
+      countryTitle: data.payload.name
     }
   }
 },initialState)
