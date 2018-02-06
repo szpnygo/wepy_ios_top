@@ -1,63 +1,103 @@
 <style lang="less">
-@import './style/weui.less';
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
+  @import './style/weui.less';
+
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
 </style>
 
 <script>
-import wepy from 'wepy'
-import 'wepy-async-function'
-import {requestIntercept} from './common/util'
-import {setStore} from 'wepy-redux'
-import  configStore from './store'
-const store = configStore();
-setStore(store);
+  import wepy from 'wepy'
+  import 'wepy-async-function'
+  import {requestIntercept} from './common/util'
+  import {setStore} from 'wepy-redux'
+  import  configStore from './store'
+  const store = configStore();
+  setStore(store);
 
-export default class extends wepy.app {
-  config = {
-    pages: [
-      'pages/index'
-    ],
-    window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
-    }
-  };
+  export default class extends wepy.app {
+    config = {
+      pages: [
+        'pages/index',
+        'pages/free_top',
+        'pages/new_game',
+        'pages/paid_top',
+        'pages/seller_top'
+      ],
+      window: {
+        backgroundTextStyle: 'light',
+        navigationBarBackgroundColor: '#fff',
+        navigationStyle: 'custom',
+        navigationBarTitleText: 'WeChat',
+        navigationBarTextStyle: 'black'
+      },
+      tabBar: {
+        color: "#a9b7b7",
+        selectedColor: "#eb4f38",
+        borderStyle: "white",
+        backgroundColor: "#fff",
+        list: [{
+          pagePath: "pages/free_top",
+          text: "免费排行",
+          iconPath: "images/apps_normal.png",
+          selectedIconPath: "images/apps_selected.png",
+        },{
+          pagePath: "pages/index",
+          text: "新鲜App",
+          iconPath: "images/app_normal.png",
+          selectedIconPath: "images/app_selected.png",
+        }, {
+          pagePath: "pages/new_game",
+          text: "本周新游",
+          iconPath: "images/games_normal.png",
+          selectedIconPath: "images/games_selected.png",
+        }, {
+          pagePath: "pages/seller_top",
+          text: "畅销排行",
+          iconPath: "images/hot_normal.png",
+          selectedIconPath: "images/hot_selected.png",
+        }, {
+          pagePath: "pages/paid_top",
+          text: "付费排行",
+          iconPath: "images/seller_normal.png",
+          selectedIconPath: "images/seller_selected.png",
+        }]
 
-  globalData = {
-    userInfo: null
-  };
-
-  constructor () {
-    super();
-    this.use('promisify');
-    this.use('requestfix');
-    this.intercept('request', requestIntercept);
-  }
-
-  onLaunch() {
-
-  }
-
-  getUserInfo(cb) {
-    const that = this;
-    if (this.globalData.userInfo) {
-      return this.globalData.userInfo
-    }
-    wepy.getUserInfo({
-      success (res) {
-        that.globalData.userInfo = res.userInfo;
-        cb && cb(res.userInfo)
       }
-    })
+
+    };
+
+    globalData = {
+      userInfo: null
+    };
+
+    constructor() {
+      super();
+      this.use('promisify');
+      this.use('requestfix');
+      this.intercept('request', requestIntercept);
+    }
+
+    onLaunch() {
+
+    }
+
+    getUserInfo(cb) {
+      const that = this;
+      if (this.globalData.userInfo) {
+        return this.globalData.userInfo
+      }
+      wepy.getUserInfo({
+        success (res) {
+          that.globalData.userInfo = res.userInfo;
+          cb && cb(res.userInfo)
+        }
+      })
+    }
   }
-}
 </script>

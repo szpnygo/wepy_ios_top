@@ -62,7 +62,7 @@
       <text class="big_title">排行榜</text>
     </view>
 
-    <repeat for="{{ base.newAppList }}" key="id" index="index" item="item">
+    <repeat for="{{ base.newGameList }}" key="id" index="index" item="item">
       <view class="list-item">
         <view class="list-item__image">
           <image src="{{ item.artworkUrl100 }}" class="list-item__icon" mode="scaleToFill" lazy-load></image>
@@ -85,7 +85,7 @@
 <script>
   import wepy from 'wepy'
   import {getStore, connect} from 'wepy-redux'
-  import {requestNewApp} from '../store/action'
+  import {requestNewGame} from '../store/action'
   import baseMixin from '../mixins/baseMixin'
   const store = getStore();
   const state = store.getState();
@@ -103,11 +103,11 @@
     mixins = [baseMixin];
 
     onLoad() {
-      store.dispatch(requestNewApp("cn"));
+      store.dispatch(requestNewGame("cn"));
     }
 
     onPullDownRefresh() {
-      store.dispatch(requestNewApp("cn"));
+      store.dispatch(requestNewGame("cn"));
     }
 
     onReachBottom() {
