@@ -8,7 +8,7 @@ export default class baseMixin extends wepy.mixin {
 
   data = {
     countryList: [
-      {name:"中国",value:"zh"},
+      {name:"中国",value:"cn"},
       {name:"美国",value:"us"},
       {name:"日本",value:"jp"},
     ],
