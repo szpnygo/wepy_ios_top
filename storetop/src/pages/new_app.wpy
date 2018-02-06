@@ -43,17 +43,10 @@
   })
 
   export default class Index extends wepy.page {
-    config = {
-      enablePullDownRefresh: true,
-    };
 
     mixins = [baseMixin];
 
-    onLoad() {
-      store.dispatch(requestNewApp(store.getState().base.country));
-    }
-
-    onPullDownRefresh() {
+    requestData(){
       store.dispatch(requestNewApp(store.getState().base.country));
     }
 

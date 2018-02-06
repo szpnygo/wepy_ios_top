@@ -43,18 +43,10 @@
   })
 
   export default class Index extends wepy.page {
-    config = {
-      navigationBarTitleText: '榜单',
-      enablePullDownRefresh: true,
-    };
 
     mixins = [baseMixin];
 
-    onLoad() {
-      store.dispatch(requestTopFree(store.getState().base.country));
-    }
-
-    onPullDownRefresh() {
+    requestData(){
       store.dispatch(requestTopFree(store.getState().base.country));
     }
 

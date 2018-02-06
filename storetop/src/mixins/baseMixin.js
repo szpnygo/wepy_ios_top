@@ -6,7 +6,12 @@ import {requestTopFree,requestNewApp,requestNewGame,requestTopPaid,requestTopSel
 const store = getStore();
 export default class baseMixin extends wepy.mixin {
 
+  config = {
+    enablePullDownRefresh: true,
+  };
+
   data = {
+    country:store.getState().base.country,
     countryList: [
       {name:"中国",value:"cn"},
       {name:"美国",value:"us"},
@@ -17,14 +22,23 @@ export default class baseMixin extends wepy.mixin {
 
   methods = {
     selectCountry: function (e) {
-      let country = this.data.countryList[e.detail.value];
-      store.dispatch({type:SELECT_COUNTRY,payload:country});
-      store.dispatch(requestTopSeller(country.value));
-      store.dispatch(requestTopPaid(country.value));
-      store.dispatch(requestNewGame(country.value));
-      store.dispatch(requestNewApp(country.value));
-      store.dispatch(requestTopFree(country.value));
+      store.dispatch({type:SELECT_COUNTRY,payload:this.data.countryList[e.detail.value]});
     },
   };
+
+
+  onLoad() {
+    this.requestData();
+  }
+
+  onPullDownRefresh() {
+    this.requestData();
+  }
+
+  watch = {
+    country (newValue, oldValue) {
+      this.requestData();
+    }
+  }
 
 }
