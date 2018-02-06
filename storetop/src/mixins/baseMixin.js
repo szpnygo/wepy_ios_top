@@ -27,9 +27,4 @@ export default class baseMixin extends wepy.mixin {
     },
   };
 
-  onShow() {
-  }
-
-  onLoad() {
-  }
 }

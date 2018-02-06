@@ -35,7 +35,6 @@
   import {requestTopPaid} from '../store/action'
   import baseMixin from '../mixins/baseMixin'
   const store = getStore();
-  const state = store.getState();
 
   @connect({
     base: state => state.base,
@@ -45,21 +44,18 @@
 
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: '榜单',
       enablePullDownRefresh: true,
     };
 
     mixins = [baseMixin];
 
     onLoad() {
-      store.dispatch(requestTopPaid(state.base.country));
+      store.dispatch(requestTopPaid(store.getState().base.country));
     }
 
     onPullDownRefresh() {
-      store.dispatch(requestTopPaid(state.base.country));
+      store.dispatch(requestTopPaid(store.getState().base.country));
     }
 
-    onReachBottom() {
-    }
   }
 </script>

@@ -74,6 +74,10 @@ export default handleActions({
     }
   },
   [SELECT_COUNTRY](state, data){
+    wepy.setStorage({
+      key: SELECT_COUNTRY,
+      data: data.payload
+    });
     return{
       ...state,
       country : data.payload.value,

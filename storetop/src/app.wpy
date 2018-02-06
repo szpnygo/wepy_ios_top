@@ -73,7 +73,7 @@
   import 'wepy-async-function'
   import {requestIntercept} from './common/util'
   import {requestTopFree, requestNewApp, requestNewGame, requestTopPaid, requestTopSeller} from './store/action'
-  import {REQUEST_API_NEW_APP, REQUEST_API_NEW_GAME, REQUEST_API_TOP_FREE, REQUEST_API_TOP_PAID, REQUEST_API_TOP_SELL} from './store/types/base'
+  import {REQUEST_API_NEW_APP, REQUEST_API_NEW_GAME, REQUEST_API_TOP_FREE, REQUEST_API_TOP_PAID, REQUEST_API_TOP_SELL, SELECT_COUNTRY} from './store/types/base'
   import {setStore} from 'wepy-redux'
   import  configStore from './store'
   const store = configStore();
@@ -145,6 +145,7 @@
 
     onLaunch() {
       //数据缓存,加载最近一次的请求数据
+      this.loadCache(SELECT_COUNTRY);
       this.loadCache(REQUEST_API_TOP_FREE);
       this.loadCache(REQUEST_API_TOP_PAID);
       this.loadCache(REQUEST_API_TOP_SELL);
@@ -153,7 +154,11 @@
     }
 
     loadCache(key){
-      store.dispatch({type:key,payload:wepy.getStorageSync(key)});
+      let data = wepy.getStorageSync(key);
+      if(data){
+        store.dispatch({type:key,payload:data});
+      }
+
     }
 
     getUserInfo(cb) {

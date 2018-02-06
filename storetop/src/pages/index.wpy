@@ -35,7 +35,6 @@
   import {requestTopFree} from '../store/action'
   import baseMixin from '../mixins/baseMixin'
   const store = getStore();
-  const state = store.getState();
 
   @connect({
     base: state => state.base,
@@ -52,14 +51,12 @@
     mixins = [baseMixin];
 
     onLoad() {
-      store.dispatch(requestTopFree(state.base.country));
+      store.dispatch(requestTopFree(store.getState().base.country));
     }
 
     onPullDownRefresh() {
-      store.dispatch(requestTopFree(state.base.country));
+      store.dispatch(requestTopFree(store.getState().base.country));
     }
 
-    onReachBottom() {
-    }
   }
 </script>
