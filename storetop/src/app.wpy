@@ -1,14 +1,70 @@
 <style lang="less">
     @import './style/weui.less';
+</style>
+<style rel="stylesheet/scss" lang="scss">
 
-    .container {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        box-sizing: border-box;
+    $brand-color: #fff;
+    .wrap {
+        position: relative;
+        z-index: 1;
+        margin: 24px;
+        background-color: $brand-color;
+        border-radius: 8px;
     }
+    .isx {
+        padding-top: 32px;
+    }
+    .list-item {
+        display: flex;
+        flex-direction: row;
+        margin:24px 0px 16px 0px;
+        font-size: 14px;
+        &__image {
+            width: 64px;
+            height: 64px;
+        }
+        &__icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+        }
+        &__order {
+            margin-left: 12px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        &__text {
+            margin-left: 12px;
+            margin-right: 12px;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+
+        }
+        &__title {
+            display:flex;
+            font-size: 16px;
+            padding-right: 12px;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+        }
+        &__sub-title {
+            font-size: 14px;
+            color: darkgrey;
+        }
+    }
+    .big_title {
+        font-size: 36px;
+        font-weight: bold;
+    }
+    .small_country{
+        font-size: 14px;
+        color: darkgrey;
+        margin-left: 8px;
+        display: inline-block;
+    }
+
 </style>
 
 <script>
@@ -75,8 +131,9 @@
     };
 
     globalData = {
-      userInfo: null
+      userInfo: null,
     };
+
 
     constructor() {
       super();
