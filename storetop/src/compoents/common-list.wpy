@@ -28,7 +28,10 @@
     };
 
     props = {
-      listData: Object,
+      listData:{
+      	default:[],
+        type:Object
+      },
     };
 
     data = {
