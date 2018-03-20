@@ -31,7 +31,7 @@
     mixins = [baseMixin];
 
     requestData() {
-//      store.dispatch(requestTopFree(store.getState().base.country));
+      store.dispatch(requestTopFree(store.getState().base.country));
     }
 
   }

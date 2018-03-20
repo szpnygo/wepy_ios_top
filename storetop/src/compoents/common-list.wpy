@@ -11,9 +11,7 @@
 
     <slot name="content">
       <repeat for="{{ listData }}" key="id" index="index" item="item">
-        <navigator url="/pages/app_detail">
           <common-item :item="item" :index="index"></common-item>
-        </navigator>
       </repeat>
     </slot>
   </view>

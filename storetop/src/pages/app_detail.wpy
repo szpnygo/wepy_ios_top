@@ -44,12 +44,12 @@
       font-size: 14px;
       margin-bottom: 8px;
       margin-top: 8px;
-      line-height: 18px;
+      line-height: 20px;
     }
   }
 
   .small-update-content {
-    height: 74px;
+    height: 80px;
     overflow: hidden;
   }
 
@@ -115,6 +115,7 @@
         <view class="detail-body__all-title">
           <text class="detail-body__title">{{ detail.trackName }}</text>
           <text class="detail-body__sub-title">{{ detail.bundleId }}</text>
+          <text class="detail-body__sub-title">评分：{{ detail.averageUserRating }}</text>
         </view>
 
       </view>
@@ -172,6 +173,7 @@
   export default class AppDetail extends wepy.page {
 
     data = {
+    	id: null,
       isUpdateOpen: false,
       isDescribeOpen: false
     };
@@ -192,8 +194,9 @@
       }
     };
 
-    onLoad() {
-      store.dispatch(requestAppDetail("414478124", store.getState().base.country));
+    onLoad(option) {
+    	console.log(option.id);
+      store.dispatch(requestAppDetail(option.id, store.getState().base.country));
     }
 
     mixins = [];

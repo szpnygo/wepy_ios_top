@@ -1,18 +1,19 @@
 <template>
-  <view class="list-item">
-    <view class="list-item__image">
-      <image src="{{ item.artworkUrl100 }}" class="list-item__icon" mode="scaleToFill"
-             lazy-load></image>
+  <navigator url="/pages/app_detail?id={{item.id}}">
+    <view class="list-item">
+      <view class="list-item__image">
+        <image src="{{ item.artworkUrl100 }}" class="list-item__icon" mode="scaleToFill"
+               lazy-load></image>
+      </view>
+
+      <view class="list-item__order">{{ index+1 }}</view>
+
+      <view class="list-item__text">
+        <text class="list-item__title">{{ item.name }}</text>
+        <text class="list-item__sub-title">{{ item.genres[0].name }}</text>
+      </view>
     </view>
-
-    <view class="list-item__order">{{ index+1 }}</view>
-
-    <view class="list-item__text">
-      <text class="list-item__title">{{ item.name }}</text>
-      <text class="list-item__sub-title">{{ item.genres[0].name }}</text>
-    </view>
-
-  </view>
+  </navigator>
 </template>
 
 <script>

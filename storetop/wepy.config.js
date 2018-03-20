@@ -12,7 +12,6 @@ module.exports = {
   },
   resolve: {
     alias: {
-      counter: path.join(__dirname, 'src/components/counter'),
       '@': path.join(__dirname, 'src')
     },
     modules: ['node_modules']

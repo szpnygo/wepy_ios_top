@@ -114,13 +114,12 @@
   export default class extends wepy.app {
     config = {
       pages: [
-        'pages/app_detail',
         'pages/index',
         'pages/new_app',
         'pages/new_game',
         'pages/paid_top',
         'pages/seller_top',
-
+        'pages/app_detail',
       ],
       window: {
         backgroundTextStyle: 'light',
