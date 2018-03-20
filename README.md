@@ -12,6 +12,8 @@ WePY 是一款让小程序支持组件化开发的框架，通过预编译的手
 
 <img src="https://github.com/szpnygo/wepy_ios_top/blob/master/screen.png" width="400"/> 
 
+<img src="https://github.com/szpnygo/wepy_ios_top/blob/master/screen_1.png" width="400"/> 
+
 ### 安装使用
 
 #### 安装（更新） wepy 命令行工具。
