@@ -111,8 +111,9 @@
     <view class="detail-body">
 
       <view class="detail-body__header">
-
-        <image src="{{ detail.artworkUrl512 }}" class="detail-icon" mode="scaleToFill" @tap="backToIndex"></image>
+        <view>
+          <image src="{{ detail.artworkUrl512 }}" class="detail-icon" mode="scaleToFill"></image>
+        </view>
         <view class="detail-body__all-title">
           <text class="detail-body__title">{{ detail.trackName }}</text>
           <text class="detail-body__sub-title">{{ detail.bundleId }}</text>
@@ -176,7 +177,8 @@
     data = {
     	id: null,
       isUpdateOpen: false,
-      isDescribeOpen: false
+      isDescribeOpen: false,
+      isx: /iphone10/i.test(wx.getSystemInfoSync().model)
     };
 
     config = {};

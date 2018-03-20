@@ -13,7 +13,7 @@
   }
 
   .isx {
-    padding-top: 32px;
+    padding-top: 32px !important;
   }
 
   .list-item {
