@@ -82,6 +82,15 @@
     margin-top: 8px;
   }
 
+  .f-col{
+    display: flex;
+    flex-direction: column;
+  }
+  .f-row{
+    display: flex;
+    flex-direction: row;
+  }
+
 </style>
 
 <script>

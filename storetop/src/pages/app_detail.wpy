@@ -1,5 +1,72 @@
 <style rel="stylesheet/scss" lang="scss">
 
+  .detail-body {
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    &__header {
+      display: flex;
+      flex-direction: row;
+    }
+    &__title {
+      font-size: 22px;
+      padding-left: 12px;
+      font-weight: bold;
+    }
+    &__sub-title {
+      font-size: 14px;
+      padding-left: 12px;
+      color: darkgrey;
+    }
+    &__all-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+
+  .detail-update {
+    &__title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    &__sub-title {
+      font-size: 14px;
+      color: darkgrey;
+    }
+    &__version {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &__content {
+      font-size: 14px;
+      margin-bottom: 8px;
+      margin-top: 8px;
+      line-height: 18px;
+    }
+  }
+
+  .small-content {
+    height: 80px;
+    overflow: hidden;
+  }
+
+  .detail-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 22%;
+    border: .5px solid rgba(0, 0, 0, .1);
+  }
+
+  .split-line {
+    width: 100%;
+    height: 1px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: #EEEEEE;
+  }
 </style>
 
 <template>
@@ -8,6 +75,34 @@
       <image src="../images/go_back.png" class="go_back_icon" mode="scaleToFill" @tap="backToIndex"></image>
     </view>
 
+    <view class="detail-body">
+
+      <view class="detail-body__header">
+
+        <image src="{{ detail.artworkUrl512 }}" class="detail-icon" mode="scaleToFill" @tap="backToIndex"></image>
+        <view class="detail-body__all-title">
+          <text class="detail-body__title">{{ detail.trackName }}</text>
+          <text class="detail-body__sub-title">{{ detail.bundleId }}</text>
+        </view>
+
+      </view>
+
+      <view class="split-line"></view>
+
+      <view class="f-col">
+        <text class="detail-update__title">新功能</text>
+        <view class="detail-update__version">
+          <text class="detail-update__sub-title">版本 {{ detail.version }}</text>
+          <text class="detail-update__sub-title">{{ detail.currentVersionReleaseDate }}</text>
+        </view>
+        <text class="detail-update__content {{isContentOpen?'':'small-content'}}" @tap="openMore">{{ detail.releaseNotes
+          }}
+        </text>
+      </view>
+
+      <view class="split-line"></view>
+
+    </view>
   </view>
 </template>
 
@@ -25,6 +120,10 @@
 
   export default class AppDetail extends wepy.page {
 
+    data = {
+      isContentOpen: false
+    };
+
     config = {};
 
     components = {};
@@ -32,6 +131,9 @@
     methods = {
       backToIndex: function () {
         wepy.navigateBack();
+      },
+      openMore: function () {
+        this.isContentOpen = true;
       }
     };
 
