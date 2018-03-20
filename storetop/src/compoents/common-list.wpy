@@ -1,20 +1,22 @@
 <template>
-    <view class="wrap {{ isx ? 'isx' : '' }}">
-        <slot name="header">
-            <view>
-                <text class="big_title">排行榜</text>
-                <picker class="small_country" range="{{ countryList }}" range-key="name" @change="selectCountry">「{{
-                    countryTitle }}」
-                </picker>
-            </view>
-        </slot>
+  <view class="wrap {{ isx ? 'isx' : '' }}">
+    <slot name="header">
+      <view>
+        <text class="big_title">排行榜</text>
+        <picker class="small_country" range="{{ countryList }}" range-key="name" @change="selectCountry">「{{
+          countryTitle }}」
+        </picker>
+      </view>
+    </slot>
 
-        <slot name="content">
-            <repeat for="{{ listData }}" key="id" index="index" item="item">
-                <common-item :item="item" :index="index"></common-item>
-            </repeat>
-        </slot>
-    </view>
+    <slot name="content">
+      <repeat for="{{ listData }}" key="id" index="index" item="item">
+        <navigator url="/pages/app_detail">
+          <common-item :item="item" :index="index"></common-item>
+        </navigator>
+      </repeat>
+    </slot>
+  </view>
 </template>
 
 <script>
@@ -28,9 +30,9 @@
     };
 
     props = {
-      listData:{
-      	default:[],
-        type:Object
+      listData: {
+        default: [],
+        type: Object
       },
     };
 

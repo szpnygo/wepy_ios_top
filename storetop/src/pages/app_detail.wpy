@@ -1,0 +1,45 @@
+<style rel="stylesheet/scss" lang="scss">
+
+</style>
+
+<template>
+  <view class="wrap {{ isx ? 'isx' : '' }}">
+    <view>
+      <image src="../images/go_back.png" class="go_back_icon" mode="scaleToFill" @tap="backToIndex"></image>
+    </view>
+
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import {getStore, connect} from 'wepy-redux'
+  import {requestAppDetail} from '../store/action'
+  const store = getStore();
+
+  @connect({
+    country: state => state.base.country,
+    countryTitle: state => state.base.countryTitle,
+    detail: state => state.detail.detail,
+  })
+
+  export default class AppDetail extends wepy.page {
+
+    config = {};
+
+    components = {};
+
+    methods = {
+      backToIndex: function () {
+        wepy.navigateBack();
+      }
+    };
+
+    onLoad() {
+      store.dispatch(requestAppDetail("414478124", store.getState().base.country));
+    }
+
+    mixins = [];
+
+  }
+</script>

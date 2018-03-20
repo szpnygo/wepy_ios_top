@@ -30,8 +30,8 @@
 
     mixins = [baseMixin];
 
-    requestData(){
-      store.dispatch(requestTopFree(store.getState().base.country));
+    requestData() {
+//      store.dispatch(requestTopFree(store.getState().base.country));
     }
 
   }

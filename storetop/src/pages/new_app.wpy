@@ -30,7 +30,7 @@
 
     mixins = [baseMixin];
 
-    requestData(){
+    requestData() {
       store.dispatch(requestNewApp(store.getState().base.country));
     }
 
