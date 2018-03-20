@@ -67,6 +67,24 @@
     margin-bottom: 16px;
     background-color: #EEEEEE;
   }
+
+  scroll-view {
+    position: relative;
+    height: 696px;
+  }
+
+  .scroll-wrap {
+    position: absolute;
+    display: flex;
+    align-items: stretch;
+    white-space: nowrap;
+  }
+
+  .show-screen{
+    width:392*0.6px;
+    height: 696*0.6px;
+    margin-right: 8px;
+  }
 </style>
 
 <template>
@@ -101,6 +119,17 @@
       </view>
 
       <view class="split-line"></view>
+
+      <view class="detail-show">
+        <text class="detail-update__title">浏览</text>
+        <scroll-view scroll-x>
+          <view class="scroll-wrap">
+            <repeat for="{{ detail.screenshotUrls }}" key="id" index="index" item="item">
+              <image src="{{ item }}" class="show-screen"></image>
+            </repeat>
+          </view>
+        </scroll-view>
+      </view>
 
     </view>
   </view>
