@@ -48,8 +48,20 @@
     }
   }
 
-  .small-content {
-    height: 80px;
+  .small-update-content {
+    height: 74px;
+    overflow: hidden;
+  }
+
+  .detail-describe {
+    &__content {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+
+  .small-describe-content {
+    height: 66px;
     overflow: hidden;
   }
 
@@ -70,7 +82,7 @@
 
   scroll-view {
     position: relative;
-    height: 696px;
+    height: 696*0.6px;
   }
 
   .scroll-wrap {
@@ -80,11 +92,13 @@
     white-space: nowrap;
   }
 
-  .show-screen{
-    width:392*0.6px;
+  .show-screen {
+    width: 392*0.6px;
     height: 696*0.6px;
     margin-right: 8px;
   }
+
+
 </style>
 
 <template>
@@ -113,8 +127,8 @@
           <text class="detail-update__sub-title">版本 {{ detail.version }}</text>
           <text class="detail-update__sub-title">{{ detail.currentVersionReleaseDate }}</text>
         </view>
-        <text class="detail-update__content {{isContentOpen?'':'small-content'}}" @tap="openMore">{{ detail.releaseNotes
-          }}
+        <text class="detail-update__content {{isUpdateOpen?'':'small-update-content'}}" @tap="openUpdateMore">
+          {{detail.releaseNotes}}
         </text>
       </view>
 
@@ -129,6 +143,14 @@
             </repeat>
           </view>
         </scroll-view>
+      </view>
+
+      <view class="split-line"></view>
+
+      <view class="detail-describe f-col">
+        <text class="detail-describe__content {{isDescribeOpen?'':'small-describe-content'}}" @tap="openDescribeMore">
+          {{detail.description}}
+        </text>
       </view>
 
     </view>
@@ -150,7 +172,8 @@
   export default class AppDetail extends wepy.page {
 
     data = {
-      isContentOpen: false
+      isUpdateOpen: false,
+      isDescribeOpen: false
     };
 
     config = {};
@@ -161,8 +184,11 @@
       backToIndex: function () {
         wepy.navigateBack();
       },
-      openMore: function () {
-        this.isContentOpen = true;
+      openUpdateMore: function () {
+        this.isUpdateOpen = true;
+      },
+      openDescribeMore: function () {
+        this.isDescribeOpen = true;
       }
     };
 
