@@ -4,6 +4,11 @@
 
 <img src="https://github.com/szpnygo/wepy_ios_top/blob/master/qr.jpg" width="400"/> 
 
+Flutter版本:
+
+https://play.google.com/store/apps/details?id=com.neobaran.app.ios.global.rank
+
+
 ### 介绍
 
 WePY 是一款让小程序支持组件化开发的框架，通过预编译的手段让开发者可以选择自己喜欢的开发风格去开发小程序。框架的细节优化，Promise，Async Functions的引入都是为了能让开发小程序项目变得更加简单，高效。
