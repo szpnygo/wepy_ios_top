@@ -8,6 +8,10 @@ Flutter版本:
 
 https://play.google.com/store/apps/details?id=com.neobaran.app.ios.global.rank
 
+Flutter版本开源:
+
+https://github.com/szpnygo/ios_rank_flutter
+
 
 ### 介绍
 
